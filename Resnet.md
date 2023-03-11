@@ -59,13 +59,15 @@ skip/short connection을 추가하기 위해서는 더해지는 값x와 출력�
 
 ResNet에서는 입력 차원이 출력 차원보다 작을 때 사용하는 3종류의 skip/shortcut connection이 있음
 
-(A) Shortcut은 증가하는 차원에 대해 추가적으로 zero padding을 적용하여 identity mapping을 수행합니다. 따라서 추가적인 파라미터가 없습니다.
+A. Shortcut은 증가하는 차원에 대해 추가적으로 zero padding을 적용하여 identity mapping을 수행하므로 추가적인 파라미터는 없음
 
-(B) 차원이 증가할 때만 projection shortcut을 사용합니다. 다른 shortcut은 identity입니다. 추가적인 파라미터가 필요합니다.
+B. 차원이 증가할 때만 projection shortcut을 사용하고 다른 shortcut은 identity 이므로 추가적인 파라미터가 필요함
 
-(C) 모든 shortcut이 projection입니다. B보다 많은 파라미터가 필요합니다.
+C. 모든 shortcut이 projection 임. B 보다 많은 파라미터가 필요함
 
-이 논문에서 C는 사용하지 않았습니다. 모델의 연산량이 증가하기 때문입니다. 아래 소개할 bottleneck 구조에서 A 옵션을 사용합니다.
+모델의 연산량이 증가하기 때문에 이 논문에서 C는 사용하지 않음
+
+아래에 있는 bottleneck 구조에서 A 옵션을 사용함
 
 ## Bottleneck Design
 신경망이 깊어지면 학습하는데 소요되는 시간은 엄청 오래 걸릴 것 입니다. bottleneck design은 다음과 같이 신경망의 복잡도를 감소하기 위해 사용됩니다. 
