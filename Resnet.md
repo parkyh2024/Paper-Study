@@ -2,17 +2,26 @@
 
 ## Plain Network의 문제점
 Plain network는 skip/shortcut connection을 사용하지 않은 일반적인 CNN(AlexNet, VGGNet) 신경망을 의미함
-Plain network가 점점 깊어질 수록 Gradient vanishing (기울기 소실)과 Exploding(폭발) 문제가 발생함
+
+
+근데 Plain network가 점점 깊어질 수록 Gradient vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문제가 발생함
 
 ### Gradient vanishing 과 Exploding
-Gradient를 구하기 위해 가중치에 해당하는 손실 함수의 미분을 Backpropagation으로 구합니다.
-이 과정에서 활성화 함수의 편미분을 구하고 그 값을 곱해줍니다.
-이는 layer가 뒷단으로 갈수록 활성화함수의 미분값이 점점 작아지거나 커지는 효과를 갖습니다.
-신경망이 깊을 때, 작은 미분값이 여러번 곱해지면 0에 수렴함
-이를 Gradient vanishing이라고 합니다. 반대로, 큰 미분값이 여러번 곱해지면 값이 매우 커질 것입니다.
-이를 Gradient Exploding이라고 합니다. 신경망이 깊어질 수록 더 정확한 예측을 할 것이라고 생각할 수 있습니다.
-하지만 아래 그림은 20-layer plain network가 50-layer plain network보다 더 낮은 train error와 test error를 얻은 것을 보여줍니다.
-논문에서는 이를 degradation 문제라고 말하고 기울기 소실에 의해 발생한다고 합니다. 
+Gradient를 구하기 위해 가중치에 해당하는 손실 함수의 미분을 Backpropagation으로 구함
+
+이 과정에서 활성화 함수의 편미분을 구하고 그 값을 곱해줌
+
+이는 layer가 뒷단으로 갈수록 활성화함수의 미분값이 점점 작아지거나 커지는 효과를 냄
+
+신경망이 깊을 때, 작은 미분값이 여러번 곱해지면 0에 수렴함. 이를 Gradient vanishing이라고 함
+
+반대로, 큰 미분값이 여러번 곱해지면 값이 매우 커지는데 이를 Gradient Exploding이라고 함
+
+신경망이 깊어질 수록 더 정확한 예측을 할 것이라고 생각할 수 있는데
+
+아래 그림은 20-layer plain network가 50-layer plain network보다 더 낮은 train error와 test error를 얻은 것을 보여줌
+
+논문에서는 이를 degradation 문제라고 말하고 기울기 소실에 의해 발생한다고 함함
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcyb9pL%2FbtqYur1rFVH%2FatPKJaR6i5xGgz9V6pek21%2Fimg.png)
 
