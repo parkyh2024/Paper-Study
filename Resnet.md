@@ -1,8 +1,8 @@
 # Resnet Review
 
 ## Plain Network의 문제점
-Plain network는 skip/shortcut connection을 사용하지 않은 일반적인 CNN(AlexNet, VGGNet) 신경망을 의미함
 
+Plain network는 skip/shortcut connection을 사용하지 않은 일반적인 CNN(AlexNet, VGGNet) 신경망을 의미함
 
 근데 Plain network가 점점 깊어질 수록 Gradient vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문제가 발생함
 
@@ -69,16 +69,31 @@ C. 모든 shortcut이 projection 임. B 보다 많은 파라미터가 필요함
 
 아래에 있는 bottleneck 구조에서 A 옵션을 사용함
 
+---
+
 ## Bottleneck Design
-신경망이 깊어지면 학습하는데 소요되는 시간은 엄청 오래 걸릴 것 입니다. bottleneck design은 다음과 같이 신경망의 복잡도를 감소하기 위해 사용됩니다. 
+
+신경망이 깊어지면 학습하는데 소요되는 시간은 크게 증가함
+
+bottleneck design은 다음과 같이 신경망의 복잡도를 감소하기 위해 사용됨 
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FB5i5c%2FbtqYDjnmO9t%2F4mYzLdkp1eIeUUs68vkepK%2Fimg.png)
 
-1x1 conv layers는 오른쪽 그림과 같이 신경망의 시작과 끝에 추가됩니다. 이 기법은 NIN과 GoogLeNet에서 제안되었습니다. 1x1 conv는 신경망의 성능을 감소시키지 않고 파라미터 수를 감소시킵니다. bottleneck design으로 연산량을 감소시켜 34-layer는 50-layer ResNet이 되고, bottleneck design을 지닌 더 깊은 신경망이 있습니다. ResNet-101과 ResNet-152 입니다. 전체적인 구조는 아래와 같습니다.
+1x1 conv layers는 오른쪽 그림과 같이 신경망의 시작과 끝에 추가되며 이 기법은 NIN과 GoogLeNet에서 제안됨
+
+1x1 conv는 신경망의 성능을 감소시키지 않고 파라미터 수를 감소시킴
+
+bottleneck design으로 연산량을 감소시켜 34-layer는 50-layer ResNet이 되고
+
+bottleneck design을 지닌 더 깊은 신경망이 있는데 ResNet-101과 ResNet-152 임
+
+전체적인 구조는 아래에 나타나 있음
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbbk33p%2FbtqYxpoqUIf%2Fc9iP9l9LTmwv6VCfcXso9k%2Fimg.png)
 
-VGG-16 보다 ResNet-152가 더 적은 연산량을 갖고 있습니다.
+위 이미지를 보면 VGG-16 보다 ResNet-152가 더 적은 연산량을 갖고 있는걸 알 수 있음
+
+---
 
 ## Plain Nerwork VS ResNet
 
@@ -86,8 +101,8 @@ VGG-16 보다 ResNet-152가 더 적은 연산량을 갖고 있습니다.
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FrUPNa%2FbtqYDj17YPx%2FLfgFTWCpN0qLPHw9u0P880%2Fimg.png)
 
-plain network에서 기울기 소실 문제 때문에 18-layer의 성능이 34-layer보다 뛰어납니다.
+plain network에서 Gradient vanishing 문제 때문에 18-layer의 성능이 34-layer보다 뛰어남을 알 수 있음
 
-ResNet에서는 기울기 소실 문제가 skip connection에 의해 해결되어 34-layer의 성능이 18-layer보다 뛰어납니다.
+ResNet에서는 Gradient vanishing 문제가 skip connection에 의해 해결되어 34-layer의 성능이 18-layer보다 뛰어난걸 알 수 있음
 
- 18-layer plain network와 18-layer ResNet network에는 차이점이 없습니다. 얇은 신경망에서는 기울기 소실 문제가 나타나지 않기 때문입니다.
+깊지 않은 신경망에서는 Gradient vanishing 문제가 나타나지 않기 때문에 18-layer plain network와 18-layer ResNet network에는 차이점이 없음
