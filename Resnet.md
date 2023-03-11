@@ -23,7 +23,7 @@ Gradient를 구하기 위해 가중치에 해당하는 손실 함수의 미분�
 
 아래 그림은 20-layer plain network가 50-layer plain network보다 더 낮은 train error와 test error를 얻은 것을 보여줌
 
-논문에서는 이를 degradation 문제라고 말하고 기울기 소실에 의해 발생한다고 함
+논문에서는 이를 degradation 문제라고 말하고 Gradient vanishing에 의해 발생한다고 함
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcyb9pL%2FbtqYur1rFVH%2FatPKJaR6i5xGgz9V6pek21%2Fimg.png)
 
