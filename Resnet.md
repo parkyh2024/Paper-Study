@@ -26,27 +26,54 @@ Gradient vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문
 
 논문에서는 이를 degradation 문제라고 말하고 Gradient vanishing에 의해 발생한다고 함
 
-![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcyb9pL%2FbtqYur1rFVH%2FatPKJaR6i5xGgz9V6pek21%2Fimg.png)
+하단 사진은 이전의 연구들로 모델의 Layer가 깊어질수록 오히려 성능이 떨어짐을 증명한 사진임
 
-이전의 연구들로 모델의 Layer가 깊어질수록 오히려 성능이 떨어짐을 증명한 셈
+![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcyb9pL%2FbtqYur1rFVH%2FatPKJaR6i5xGgz9V6pek21%2Fimg.png)
 
 ---
 
 ## Skip / Shortcut Connection in Residual Network(ResNet)
 
-Gradient vanishing / Gradient Exploding 문제를 해결하기 위해 입력 x를 몇 layer 이후의 출력값에 더해주는 skip/shortcut connection을 더해줌
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbmdg7R%2FbtqYDjgD1TR%2Fp6qeoRgyJlJvBjKnTPNB9k%2Fimg.png)
 
-기존의 신경망은 H(x) = x가 되도록 학습 했고 skip connection에 의해 출력값에 x를 더하고 H(x) = F(x) + x로 정의하고
+상단의 Figure2는 ResNet 모델의 구조를 시각적으로 보여주는 그림임. 해당 그림은 ResNet-34라는 모델을 예시로 사용하고 있음
 
-그리고 F(x) = 0이 되도록 학습하여 H(x) = 0 + x가 되게 함. 이 방법이 최적화하기 훨씬 쉽다고 함
+ResNet-34는 총 34개의 레이어로 이루어져 있고 이 중에서 첫 번째 레이어는 입력 이미지를 처리하는 convolutional layer임
 
-미분을 했을 때 더해진 x가 1이 되어 Gradient vanishing 문제가 해결됨
+이후에는 여러 개의 residual block이 반복되어 쌓여 있는데 각 residual block은 shortcut connection과 두 개의 convolutional layer로 구성되어 있습니다.
 
-이 문제가 해결되면 정확도가 감소되지 않고 신경망의 layer를 깊게 쌓을 수 있어 더 나은 성능의 신경망 구축 가능
+shortcut connection은 입력값을 바로 출력값에 더해주는 것으로 residual function F(x)를 학습하는 데 도움을 줌
+
+각 residual block 내에서는 shortcut connection과 convolutional layer가 번갈아가면서 연결되어 입력값 x가 shortcut connection을 통해 출력값에 직접적으로 전달됨
+
+마지막으로 ResNet-34 모델은 global average pooling layer와 fully-connected layer로 구성된 classifier 부분으로 마무리됨
+
+이 부분은 네트워크가 이미지 분류 문제를 해결할 수 있도록 최종 출력값을 계산하는 역할을 함
+
+Figure2 에서는 ResNet-34 모델의 구조를 간단하게 보여주며 이러한 구조가 깊은 네트워크에서도 gradient vanishing, gradient exploding 문제 없이 잘 동작함을 보여줌
 
 ---
+
+## Gradient Vanishing과 Gradient Exploding
+
+Gradient Vanishing과 Gradient Exploding은 딥러닝에서 깊은 네트워크를 학습시킬 때 발생하는 문제로서
+
+이 문제를 해결하기 위해 논문에서는 두 가지 방법을 제안함
+
+첫 번째는 Normalized Initialization이라는 방법임
+
+이 방법은 각 레이어의 가중치(weight)를 초기화할 때 특정한 분포(예: 평균 0, 분산 1인 정규분포)로부터 샘플링한 후 이를 Normalize(정규화)하는 것임
+
+이렇게 함으로써 각 레이어의 출력값이 일정한 분산을 가지게 되어 gradient vanishing과 exploding을 방지할 수 있다고 함
+
+두 번째는 Intermediate Nrmalization Layers라는 방법임
+
+이 방법은 네트워크 내에 Normalization Layer를 추가하여 각 레이어의 출력값을 Normalize하는 것임
+
+이렇게 함으로써 Gradient가 Backpropagation 과정에서 일정한 크기를 유지하면서 전파될 수 있게 되어 Gradient Vanishing과 Exploding 문제를 해결할 수 있다고 함
+
+논문에서는 이러한 두 가지 방법을 조합하여 ResNet 모델을 구성하였고 실험 결과 깊은 네트워크에서도 잘 동작함을 보여줌
 
 ## ResNet Architecture
 
