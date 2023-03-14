@@ -1,31 +1,34 @@
 # Resnet Review
 
-## Plain Network의 문제점
+2015년에 ILSVRC 이미지 인식 대회에서 1위 한 논문으로서 에러율이 인간보다 낮아지기 시작했고
 
-Plain network는 skip/shortcut connection을 사용하지 않은 일반적인 CNN(AlexNet, VGGNet) 신경망을 의미함
+깊은 NetWork를 사용했다는 점에서 이때부터가 진짜 딥러닝이라고 하는 논문이기도 함
 
-근데 Plain network가 점점 깊어질 수록 Gradient vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문제가 발생함
+## Introducktion
 
----
+이 논문에서는 딥뉴럴 네트워크는 학습시키기 어렵기 때문에 비교적 쉬운 잔여 학습 방법을 제안함
 
-### Gradient vanishing 과 Exploding
-Gradient를 구하기 위해 가중치에 해당하는 손실 함수의 미분을 Backpropagation으로 구함
+직전에 나온 VGG보다는 깊지만 덜 복잡하다고 말함
 
-이 과정에서 활성화 함수의 편미분을 구하고 그 값을 곱해줌
+지금까지의 AlexNET등의 논문만으로 보았을 때 신경망이 깊어질수록 더 정확한 예측을 할거라고
 
-이는 layer가 뒷단으로 갈수록 활성화함수의 미분값이 점점 작아지거나 커지는 효과를 냄
+생각되었기 때문에 Layer만 깊게 쌓으면 될것이라고 생각할 수 있지만 Layer가 깊어질 수록
+
+Gradient vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문제가 발생함
+
+( Plain network는 skip/shortcut connection을 사용하지 않은 일반적인 CNN(AlexNet, VGGNet) 신경망을 의미함 )
 
 신경망이 깊을 때, 작은 미분값이 여러번 곱해지면 0에 수렴하는데 이를 Gradient vanishing이라고 함
 
 반대로, 큰 미분값이 여러번 곱해지면 값이 매우 커지는데 이를 Gradient Exploding이라고 함
-
-신경망이 깊어질 수록 더 정확한 예측을 할 거라고 생각할 수 있는데
 
 아래 그림은 20-layer plain network가 50-layer plain network보다 더 낮은 train error와 test error를 얻은 것을 보여줌
 
 논문에서는 이를 degradation 문제라고 말하고 Gradient vanishing에 의해 발생한다고 함
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fcyb9pL%2FbtqYur1rFVH%2FatPKJaR6i5xGgz9V6pek21%2Fimg.png)
+
+이전의 연구들로 모델의 Layer가 깊어질수록 오히려 성능이 떨어짐을 증명한 셈
 
 ---
 
