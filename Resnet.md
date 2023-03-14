@@ -81,18 +81,18 @@ Gradient Vanishing과 Gradient Exploding은 딥러닝에서 깊은 네트워크�
 
 위 그림은 ResNet의 구조임
 
-맨 아래 구조는 VGG-19, 중간 구조는 깊어진 34-Layer plain network,
-
 상단 구조는 34-Layer ResNet이며 plain network에 skip/short connection이 추가되어있음
 
-- 하단의 plain network는 shortcut connection을 사용하지 않은 일반적인 네트워크임
-이 경우에는 깊은 네트워크에서 gradient vanishing과 exploding 문제가 발생할 가능성이 높음
+중간 구조는 깊어진 34-Layer plain network, 맨 아래 구조는 VGG-19를 나타냄
+
+- 상단의 projection shortcut connection은 입력값 x를 1x1 convolutional layer를 통해 차원을 맞춘 후 출력값에 더해주는 방식임
+이 방식은 identity mapping보다 조금 더 많은 파라미터를 가지지만 성능 향상에 도움을 줄 수 있음
 
 - 중간의 shortcut connection with identity mapping은 입력값 x를 그대로 출력값에 더해주는 방식으로
 잔차 함수 F(x)를 학습하는 데 도움을 줌. 이 방식은 ResNet 모델에서 가장 기본적으로 사용되는 방법임
 
-- 상단의 projection shortcut connection은 입력값 x를 1x1 convolutional layer를 통해 차원을 맞춘 후 출력값에 더해주는 방식임
-이 방식은 identity mapping보다 조금 더 많은 파라미터를 가지지만 성능 향상에 도움을 줄 수 있음
+- 하단의 plain network는 shortcut connection을 사용하지 않은 일반적인 네트워크임
+이 경우에는 깊은 네트워크에서 gradient vanishing과 exploding 문제가 발생할 가능성이 높음
 
 위 그림은 이러한 세 가지 shortcut connection의 형태를 시각적으로 보여주고 있으며
 
