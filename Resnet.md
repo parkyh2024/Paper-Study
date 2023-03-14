@@ -14,7 +14,7 @@
 
 생각되었기 때문에 Layer만 깊게 쌓으면 될것이라고 생각할 수 있지만 Layer가 깊어질 수록
 
-Gradient vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문제가 발생함
+Gradient Vanishing(기울기 소실)과 Gradient Exploding(기울기 폭발) 문제가 발생함
 
 ( Plain network는 skip/shortcut connection을 사용하지 않은 일반적인 CNN(AlexNet, VGGNet) 신경망을 의미함 )
 
@@ -79,33 +79,28 @@ Gradient Vanishing과 Gradient Exploding은 딥러닝에서 깊은 네트워크�
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbQfaUX%2FbtqYAtD1KcX%2FZdc4DLFzR9SoJYBlO6M1uK%2Fimg.png)
 
-위 그림은 ResNet 구조인데 맨 아래 구조는 VGG-19 를 나타냄
+위 그림은 ResNet의 구조임
 
-중간 구조는 VGG-19가 더 깊어진 34-layer plain network 를 나타냄
+맨 아래 구조는 VGG-19, 중간 구조는 깊어진 34-Layer plain network,
 
-맨 윗 구조는 34-layer residual network(ResNet)이며 plain network에 skip/short connection이 추가되었음
+상단 구조는 34-Layer ResNet이며 plain network에 skip/short connection이 추가되어있음
 
-skip/short connection을 추가하기 위해서는 더해지는 값x와 출력값의 차원이 같아야 하며
+- 하단의 plain network는 shortcut connection을 사용하지 않은 일반적인 네트워크임
+이 경우에는 깊은 네트워크에서 gradient vanishing과 exploding 문제가 발생할 가능성이 높음
 
-ResNet에서는 입력 차원이 출력 차원보다 작을 때 사용하는 3종류의 skip/shortcut connection이 있음
+- 중간의 shortcut connection with identity mapping은 입력값 x를 그대로 출력값에 더해주는 방식으로
+잔차 함수 F(x)를 학습하는 데 도움을 줌. 이 방식은 ResNet 모델에서 가장 기본적으로 사용되는 방법임
 
-A. Shortcut은 증가하는 차원에 대해 추가적으로 zero padding을 적용하여 identity mapping을 수행하므로 추가적인 파라미터는 없음
+- 상단의 projection shortcut connection은 입력값 x를 1x1 convolutional layer를 통해 차원을 맞춘 후 출력값에 더해주는 방식임
+이 방식은 identity mapping보다 조금 더 많은 파라미터를 가지지만 성능 향상에 도움을 줄 수 있음
 
-B. 차원이 증가할 때만 projection shortcut을 사용하고 다른 shortcut은 identity 이므로 추가적인 파라미터가 필요함
+위 그림은 이러한 세 가지 shortcut connection의 형태를 시각적으로 보여주고 있으며
 
-C. 모든 shortcut이 projection 임. B 보다 많은 파라미터가 필요함
-
-모델의 연산량이 증가하기 때문에 이 논문에서 C는 사용하지 않음
-
-아래에 있는 bottleneck 구조에서 A 옵션을 사용함
+이러한 방식들이 ResNet 모델의 성능 향상에 어떤 영향을 미치는지 실험 결과와 함께 보여줌
 
 ---
 
 ## Bottleneck Design
-
-신경망이 깊어지면 학습하는데 소요되는 시간은 크게 증가함
-
-bottleneck design은 다음과 같이 신경망의 복잡도를 감소하기 위해 사용됨 
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FB5i5c%2FbtqYDjnmO9t%2F4mYzLdkp1eIeUUs68vkepK%2Fimg.png)
 
