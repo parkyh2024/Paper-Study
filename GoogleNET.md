@@ -2,7 +2,7 @@
 
 ## Introduction
 
-해당 논문은 AlexNET의 1/12배의 파라미터를 사용하였음에도 더 정확했다.
+해당 논문은 2014 ILSVRC Competition 우승작으로서 AlexNET의 1/12배의 파라미터를 사용하였음에도 더 정확했다.
 
 Inception이라고 불리는 구조를 사용하였으며 Computer Vision Part의 효율적인 Deep Neural Network Architecture에 중점을 두었다.
 
@@ -20,7 +20,7 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
 
  Deep Neural Networks의 성능을 확실히 개선시키는 방법은 Network의 사이즈를 증가시는 것인데 이 방법은 두가지의 큰 단점을 가지고 있다.
 
- 일반적으로 크기가 클수록 파라미터의 수가 많아지므로 확대된 네트워크가 과대적합될 가능성이 커진다. 특히 training set에 라벨링된 data가 제한될 경우 더욱 그렇다.
+ 일반적으로 크기가 클수록 파라미터의 수가 많아지므로 확대된 네트워크가 Overfitting이 발생할 우려가 있다.
 
  이건 중요한 장애 요소가 될수 있는데 왜냐하면 training set에 일일히 라벨을 다는것은 매우 힘든 일이기 때문이다.
 
@@ -60,14 +60,4 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FA4nO0%2Fbtq98dKbKai%2FCmgKHK0GeUFjdmnfPPXuW0%2Fimg.png)
 
 [이미지출처] https://mldlcvmjw.tistory.com/292
-
- 
- 
- 
-
-GoogleNet의 정확한 구조는 다음과 같다.
-
-
-
-
 
