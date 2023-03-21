@@ -50,7 +50,7 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
  
  높은 layer에서는 inception module을 사용한다.
 
- ### 결론적으로 inception module을 통해 두 가지 효과를 얻을 수 있다.
+ ### inception module을 통해 두 가지 효과를 얻을 수 있다.
 
 1. dimension reduction을 통해 다음 계층의 input의 수를 조절할 수 있기 때문에 계산 복잡도에서 계산양의 증가없이 각 단계에서 unit의 수를 상당히 증가시킬 수 있다.
 2. 1x1, 3x3, 5x5 convolution 연산을 통해 다양한 특징을 추출할 수 있기 때문에 시각 정보가 다양한 규모로 처리되고 다음 계층은 동시에 서로 다른 규모에서 특징을 추출할 수 있게 된다.
