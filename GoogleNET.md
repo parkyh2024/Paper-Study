@@ -26,9 +26,13 @@ Deep neural networks의 성능을 확실히 개선시키는 방법은 network의
 
 또 다른 단점은 컴퓨팅 리소스의 사용이 대폭 증가한다는 것이다.
 
-예를 들어 deep vision network에서 만약 두개의 합성곱 층이 연결되어 있다면 ***4배***의 연상량이 증가하게 된다.
+예를 들어 deep vision network에서 만약 두개의 합성곱 층이 연결되어 있다면 ***4배의 연상량이 증가***하게 된다.
 
 이 두가지 문제를 해결하는 근본적인 방법은 완전히 연결된 아키텍쳐에서 sparsely connected architectures로 전환하는 것이다. 합성곱 층에서도 마찬가지이다.
 
 ## Architectural Details
+
+![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbk1AHm%2Fbtrac9fKzpS%2FHrK8Qa9mptVaXgvt6HGuHK%2Fimg.png)
+
+[이미지출처] https://mldlcvmjw.tistory.com/292
 
