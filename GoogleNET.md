@@ -37,10 +37,6 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
 
 ## GoogleNet
 
-![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FA4nO0%2Fbtq98dKbKai%2FCmgKHK0GeUFjdmnfPPXuW0%2Fimg.png)
-
-[이미지출처] https://mldlcvmjw.tistory.com/292
-
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdf2mjD%2Fbtrac795XSx%2F0fKaH0JLiGOWkhqbKbfHb1%2Fimg.png)
 
 [이미지출처] https://mldlcvmjw.tistory.com/292
@@ -54,6 +50,20 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
 즉 중간 output지점에서 input쪽으로 backpropagation을 전달해 줄 수 있다는 의미이기도 하다.
 
 물론 최종 output에서도 backpropagation을 전달하기도 한다.
+
+![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FA4nO0%2Fbtq98dKbKai%2FCmgKHK0GeUFjdmnfPPXuW0%2Fimg.png)
+
+[이미지출처] https://mldlcvmjw.tistory.com/292
+
+위의 표는 그래프(또는 다이어그램)를 테이블로 정리한 것이다. 많은 딥러닝 논문들이 이러한 표 형태로 자신들의 네트워크 구조를 표현한다.
+
+우선 input이 들어가서 맨 위의 conv으로 들어갈테고 conv - maxpool - conv - maxpool 단계를 거치는데 이걸 STEM영역 또는 Conv영역이라고 한다.
+
+첫 단계로 7x7 conv을 진행한다. 옆 숫자 2는 stide를 의미하며 stride 2를 줘서 진행한다는 의미다.
+
+입력된 이미지 224x224x3 (컬러이미지니까 3레이어)이 첫 conv를 거쳐112x112x64가 된다.
+
+depth는 진행하는 횟수를 의미하며 우측의 params는 파라미터인데 이 conv를 학습하기 위한 weight의 갯수를 의미한다. 
 
 ## Architectural Details
 
