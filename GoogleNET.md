@@ -39,8 +39,6 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdf2mjD%2Fbtrac795XSx%2F0fKaH0JLiGOWkhqbKbfHb1%2Fimg.png)
 
-[이미지출처] https://mldlcvmjw.tistory.com/292
-
 위 사진을 보면 아래가 Input, 위가 Output이다
 
 아래쪽 레이어는 STEM레이어인데 convolusional레이어 라고도 불린다. 각 중간에 뭉쳐있어 보이는건 inception Block이고
@@ -53,7 +51,6 @@ Network-in-Network방법은 1x1 합성곱 필터와 ReLU 함수를 사용하는 
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FA4nO0%2Fbtq98dKbKai%2FCmgKHK0GeUFjdmnfPPXuW0%2Fimg.png)
 
-[이미지출처] https://mldlcvmjw.tistory.com/292
 
 위의 표는 그래프(또는 다이어그램)를 테이블로 정리한 것이다. 많은 딥러닝 논문들이 이러한 표 형태로 자신들의 네트워크 구조를 표현한다.
 
@@ -68,8 +65,6 @@ depth는 진행하는 횟수를 의미하며 우측의 params는 파라미터인
 ## Architectural Details
 
 ![이미지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbk1AHm%2Fbtrac9fKzpS%2FHrK8Qa9mptVaXgvt6HGuHK%2Fimg.png)
-
-[이미지출처] https://mldlcvmjw.tistory.com/292
 
  Inception module을 보면 1x1 convolution이 보이는데 ***이것이 inception module의 핵심***이다.
  
