@@ -40,7 +40,7 @@ DenseNet은 X의 출력인 H(x)와 입력 X를 Concatenate 하는 구조로 H(x)
 
 ### Forward Propagation
 
-![이미지}(https://user-images.githubusercontent.com/122156509/231356003-92cd16ba-5190-4fbf-8a1a-127f03549d68.jpg)
+![이미지](https://user-images.githubusercontent.com/122156509/231356003-92cd16ba-5190-4fbf-8a1a-127f03549d68.jpg)
 
 X0를 H1이라는 Convolution을 거치면 나오는 출력이 X1 인데 여기에 X0를 Concatenate하고
 
