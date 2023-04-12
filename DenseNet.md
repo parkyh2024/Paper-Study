@@ -118,8 +118,8 @@ DenseNet, 100 Layers 0.8M 파라미터의 테스트 에러가 4.5% 로
 
 Layer가 깊고 파라미터 수가 많은 DenseNet 250 Layers 15.3M 파라미터 수를 보면 좌측에 Test Error가 3.6%로
 
-Previouis STA보다 성능이 좋은걸 알 수 있다.
+Previouis SOTA보다 성능이 좋은걸 알 수 있다.
 
 Data agumentationdmf 한 경우 ResNet은 Test Error가 11.26%, 10.56% 로 OverFitting되었다.
 
-반면에 DenseNet은 Previous STA보다도 분류 성능이 높게 나타난걸 확인할 수 있다.
+반면에 DenseNet은 Previous SOTA보다도 분류 성능이 높게 나타난걸 확인할 수 있다.
