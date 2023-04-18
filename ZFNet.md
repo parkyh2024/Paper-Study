@@ -1,6 +1,6 @@
 # ZFNet
 
-1번사진
+![이미지](https://user-images.githubusercontent.com/122156509/232799956-bc404efa-a516-4064-8350-bd3770b7fedc.jpeg)
 
 ## Abstract
 
@@ -50,7 +50,7 @@ conv layer 출력인 output activation 중 시각화하기 위한 output activat
 
 1 unpool > 2. rectify > 3. filter
 
-사진2
+![이미지](https://user-images.githubusercontent.com/122156509/232800008-90c0cc7f-b84a-480d-ad51-fd71b4f68c14.jpeg)
 
 위 이미지는 위에서 설명한 3단계를 도식화한 이미지이다. 왼쪽이 deconv, 오른쪽이 conv 연산이다.
 
@@ -64,7 +64,7 @@ conv layer 출력인 output activation 중 시각화하기 위한 output activat
 
 이를 통해 max pooling을 역연산한 것의 근사치를 얻을 수 있다.
 
-이미지3
+![이미지](https://user-images.githubusercontent.com/122156509/232799995-d608c41e-b847-4b3d-8aa2-d194e34dbbcb.jpeg)
 
 위 이미지는 unpooling의 이해를 돕는다.
 
@@ -76,7 +76,7 @@ deconvnet에서도 유효한 feature 재구조화를 위해 relu activation을 �
 
 ### Filtering
 
-사진4
+![이미지](https://user-images.githubusercontent.com/122156509/232800008-90c0cc7f-b84a-480d-ad51-fd71b4f68c14.jpeg)
 
 이 절에서는 위 그림 왼쪽 아래에 언급된 Convolutional Filtering{F^T}의 관한 내용을 설명한다.
 
@@ -88,7 +88,7 @@ deconvnet은 convnet이 사용한 filter의 전치행렬을 사용한다.
 
 ### 3. Training Details
 
-사진5
+![이미지](https://user-images.githubusercontent.com/122156509/232800018-e8ea2ebd-aeaa-45d6-92ea-2008a501dfd7.jpeg)
 
 gpu의 병렬적 구성으로 인해서 나누어진 부분만 dense layer로 대체된 것 말고는 Alexnet과 흡사하다.
 
@@ -100,9 +100,9 @@ gpu의 병렬적 구성으로 인해서 나누어진 부분만 dense layer로 �
 
 #### Feature Visualization
 
-사진6
+![이미지](https://user-images.githubusercontent.com/122156509/232800030-42e37549-ae8e-492f-9a4d-25e922d93f78.jpeg)
 
-사진7
+![이미지](https://user-images.githubusercontent.com/122156509/232800038-f7e20d24-ad5d-4703-ae2f-6f9b82f427f9.jpeg)
 
 위의 이미지는 top 9 activation을 추려낸 feature visualization의 결과이다.
 
@@ -138,7 +138,7 @@ layer마다 시각화 하는 특질이 다른 것을 확인할 수 있는데, �
 
 논문에서는 실험을 통해 이 궁금증을 해결하고자 한다.
 
-사진8
+![이미지](https://user-images.githubusercontent.com/122156509/232800043-60497fda-9707-4b4a-a15f-ead4efa3e87c.jpeg)
 
 위의 그림을 통해 model이 진정으로 객체의 위치를 파악하고 분류를 한다는 것을 확인할 수 있다.
 
@@ -152,10 +152,3 @@ deconvolution을 사용한 시각화 기법을 제시하여, classifier의 opera
 
 
 참조 : https://velog.io/@whgurwns2003/Visualizing-and-Understanding-Convolutional-NetworksZFnet-%EB%85%BC%EB%AC%B8-%EC%A0%95%EB%A6%AC
-
-
-
-
-
-
-
