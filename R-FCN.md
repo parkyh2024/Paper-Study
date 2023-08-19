@@ -103,3 +103,9 @@ R-FCN 모델은 backbone network로 ResNet-101 network를 사용함
 ### Position sensitive score maps & Position-sensitive RoI pooling
 
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/00cd260f-8750-4c86-b0e6-c079e08ca5c4)
+
+RPN을 통해 얻은 각각의 RoI에 대하여 class별로 위치 정보를 encode하기 위하여 RoI를 k x k 구간의 grid로 나눠줍니다. RoI의 크기가 w x h 인 경우, 각 구간의 크기는 대략적으로
+w/k x h/k 임
+
+논문에서는 k = 3 으로 지정함
+
