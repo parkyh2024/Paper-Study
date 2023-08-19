@@ -15,3 +15,20 @@ R-FCN 모델을 살펴보기에 앞서 논문을 이해하기 위해 필요한 �
 ---
 
 ![이미지](https://user-images.githubusercontent.com/122156509/261748164-3fe8e018-a803-4c79-adeb-af29894578fb.jpg)
+
+R-FCN 모델의 구성은 backbone network와 RPN(Region Proposal Network)임
+
+backbone network는 feature extract 기능을 수행하며, 논문에서는 ResNet-101 모델을 사용함
+
+원본 이미지를 backbone network와 RPN에 입력하여 각각 K^2(C+1)-d channel을 가지는 Position-sensitive score maps과 RoI(Region of Interest)를 얻음
+
+이를 활용하여 Position-sensitive RoI pooling을 수행하여 kxk(x(C+1)) 크기의 feature map을 출력함
+
+feature map의 각 channel별로 요소의 평균값을 구하는 voting을 수행하여 (C+1) 크기의 feature vector를 얻고 이에 대하여 softmax 함수를 적용하여 loss를 계산함
+
+---
+
+### Main Ideas
+
+이제 본 논문의 핵심내용을 보도록 하겠음
+
