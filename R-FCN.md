@@ -109,3 +109,15 @@ w/k x h/k 임
 
 논문에서는 k = 3 으로 지정함
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/d0b3f8c5-109c-4b93-a584-c427a275462a)
+
+앞서 얻은 feature map의 channel 수가 k^2(C+1)이 되도록 마지막 conv연산을 적용하여 Position-sensitive score map을 생성함
+
+여기서 C = class의 수 를 의미함(배경을 포함하기 때문에 1을 더해줌)
+
+이같은 경우 RoI를 9(K^2=9)개의 구간으로 나눠 class별로 위치 정보인 {top-left, top-center, top-right, ..., bottom-right}에 해당하는 정보를 encode하고 있다고 볼 수 있음
+
+Position-sensitive score map과 RoI를 활용하여 (i, j) 번째 구간에서 오직 (i, j)번째 score map만 pooling하는 Position-sensitive RoI pooling을 수행함
+
+pooling한 결과를 구하는 수식은 아래와 같음
+
