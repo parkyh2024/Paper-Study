@@ -32,3 +32,41 @@ feature map의 각 channel별로 요소의 평균값을 구하는 voting을 수�
 
 이제 본 논문의 핵심내용을 보도록 하겠음
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/047b979d-1bfc-4dd8-bf13-f290b46113f1)
+
+Translation invariance는 입력값의 위치가 변해도 출력값은 동일할 경우에 해당하는 함수의 속성인데
+
+만약 위치가 서로 다른 동일한 객체, 예를 들어 위의 그림과 같이 석상(statue)의 이미지를 특정 모델에 입력해도 동일하게 석상이라고 인식할 경우
+
+해당 모델은 translation invariance한 속성을 가지고 있다고 할 수 있고
+
+반대로 입력값의 위치가 변하면 출력값이 달라질 경우 이를 translation variance(=equivalence)라고 함
+
+ 
+
+Image classification task 시, 이미지 내 객체의 위치가 바뀌더라도 동일한 객체로 인식하는 것이 바람직하기 때문에
+
+인식 image classification 모델은 translation invariance 속성을 선호하고
+
+반면 Object detection 시에는 객체의 위치가 변화하면 이러한 변화를 잘 포착하는 것이 바람직하기 때문에 학습 시 translation variance 속성을 중요시 함
+
+ 
+
+2-stage detector의 경우 feature를 추출하는 역할을 수행하는 backbone network와 detection을 수행하는 network로 구성되어 있음
+
+그중 backbone network는 image classification task를 위해 pre-trained되어 있음
+
+R-CNN의 경우 AlexNet, Fast R-CNN과 Faster R-CNN의 경우 VGG16이 backbone network임
+
+즉 원본 이미지를 backbone network에 입력하여 얻은 feature map은 translation invariance한 속성을 띄고 있음
+
+ 
+
+반면 detection을 수행하는 network는 translation variance한 속성을 가져 객체의 위치 변화에 민감하게 반응하는 것이 바람직한데
+
+원본 이미지를 backbone network에 입력하여 얻은 feature map은 위치 정보가 소실된 채로 detection network로 입력됨
+
+detection network는 객체에 대한 위치 정보가 부재한 feature map이 입력되어 적절하게 학습이 이뤄지지 않음
+
+이처럼 두 network간에 충돌이 발생하는 경우를 translation invariance dilmma라고 하며, 이로 인해 mAP값이 하락하게 됨
+
