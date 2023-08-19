@@ -102,4 +102,4 @@ R-FCN 모델은 backbone network로 ResNet-101 network를 사용함
 
 ### Position sensitive score maps & Position-sensitive RoI pooling
 
-
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/00cd260f-8750-4c86-b0e6-c079e08ca5c4)
