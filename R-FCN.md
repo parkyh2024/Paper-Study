@@ -70,3 +70,4 @@ detection network는 객체에 대한 위치 정보가 부재한 feature map이 
 
 이처럼 두 network간에 충돌이 발생하는 경우를 translation invariance dilmma라고 하며, 이로 인해 mAP값이 하락하게 됨
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/047b979d-1bfc-4dd8-bf13-f290b46113f1)
