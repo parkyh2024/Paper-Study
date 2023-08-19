@@ -70,4 +70,36 @@ detection network는 객체에 대한 위치 정보가 부재한 feature map이 
 
 이처럼 두 network간에 충돌이 발생하는 경우를 translation invariance dilmma라고 하며, 이로 인해 mAP값이 하락하게 됨
 
-![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/047b979d-1bfc-4dd8-bf13-f290b46113f1)
+---
+
+![이미지](https://user-images.githubusercontent.com/122156509/261754145-0cbb2dc5-66df-4e70-9e29-1b2cc755aff5.png)
+
+ResNet 논문의 저자는 위와 같은 문제를 해결하기 위해 두 conv layer 사이에 RoI pooling layer를 추가했음(ResNet은 classification task 외에도 object detection task용으로도 활용될 수 있있음).
+
+Object detection task를 위해 설계된 ResNet의 구조는 backbone network로 ResNet을 사용하며, 전체적인 구조는 Faster R-CNN 모델과 유사함
+
+하지만 backbone network 이후 conv1~4라는 conv layer가 있으며, RoI pooling 이후 conv5라는 conv layer가 있다는 점에서 차이가 있음
+
+ResNet+Faster R-CNN 모델은 두 conv layer 사이에 RoI pooling을 삽입하여 region specific한 연산을 추가함
+
+이는 network가 서로 다른 위치에 있는 객체를 서로 다르게 인식한다는 것을 의미하고 이를 통해 RoI pooling layer 이후 conv layer는 translation variance한 속성을 학습하는 것이 가능해짐
+
+ 
+
+하지만 본 논문의 저자는 ResNet+Faster R-CNN 모델과 같은 방법을 사용할 경우 성능은 높일 수 있지만 모든 RoI를 개별적으로 conv, fc layer에 입력하기 때문에 학습 및 추론 속도가 느려진다는 점을 지적함
+
+이러한 문제를 해결하기 위해 R-FCN 모델은 RPN을 통해 추출한 RoI끼리 연산을 공유하면서 객체의 위치에 대한 정보를 포함한 feature map을 사용하는 구조를 가지고 있음
+
+---
+
+### Backbone Network
+
+R-FCN 모델은 backbone network로 ResNet-101 network를 사용함
+
+논문의 저자는 pre-trained된 ResNet-101 모델의 average pooling layer와 fc layer를 제거하고 오직 conv layer만으로 feature map을 연산하도록 학습시킴
+
+마지막 feature map의 channel은 2048-d이며, 1x1 conv 연산을 적용하여 channel 수를 1024-d로 줄임
+
+### Position sensitive score maps & Position-sensitive RoI pooling
+
+
