@@ -123,3 +123,8 @@ pooling한 결과를 구하는 수식은 아래와 같음
 
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/cd10d6ab-39f6-4317-9c27-c39b1963555d)
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/99632fe7-91de-4cd8-b562-f3873d75fecf)
+
+간단하게 살펴보면 각 class별로 w/k x h/k 만큼의 RoI grid에 대하여 average pooling을 수행한 것이라고 볼 수 있습니다. 이를 통해 RoI별로 크기가 k x k 이며
+
+channel 수가 (C+1)인 feature map이 생성됨
