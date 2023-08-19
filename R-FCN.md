@@ -149,4 +149,6 @@ K^2(C+1)-d feature map 외에도 4k^2-d feature map을 추가하여 bounding box
 
 ### Loss function
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/70867748-9fa0-429e-a072-1b939eab52d4)
+
 
