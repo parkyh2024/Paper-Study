@@ -121,3 +121,5 @@ Position-sensitive score map과 RoI를 활용하여 (i, j) 번째 구간에서 �
 
 pooling한 결과를 구하는 수식은 아래와 같음
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/cd10d6ab-39f6-4317-9c27-c39b1963555d)
+
