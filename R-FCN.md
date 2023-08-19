@@ -128,3 +128,25 @@ pooling한 결과를 구하는 수식은 아래와 같음
 간단하게 살펴보면 각 class별로 w/k x h/k 만큼의 RoI grid에 대하여 average pooling을 수행한 것이라고 볼 수 있습니다. 이를 통해 RoI별로 크기가 k x k 이며
 
 channel 수가 (C+1)인 feature map이 생성됨
+
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/9700cddc-d1df-46e3-ad9f-7cd58329db99)
+
+이후 각 class별로 k x k 크기의 feature map의 각 요소들의 평균을 구함
+
+논문에서는 이 과정을 voting이라고 언급하며 k = 3 일 경우, channel별로 9개의 요소의 합의 평균을 구하면 됨
+
+이를 통해 (C+1)크기의 feature vector를 얻을 수 있고, softmax function을 통해 loss를 계산함
+
+위의 그림은 position-sensitive RoI pooling과 voting을 수행하는 과정의 그림임
+
+---
+
+논문에서는 bounding box regression 역시 비슷한 방법으로 수행함
+
+K^2(C+1)-d feature map 외에도 4k^2-d feature map을 추가하여 bounding box regression을 수행함
+
+이에 대한 내용은 아래 Training 파트에서 살펴보겠음
+
+### Loss function
+
+
