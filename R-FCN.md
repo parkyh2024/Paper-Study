@@ -28,7 +28,7 @@ feature map의 각 channel별로 요소의 평균값을 구하는 voting을 수�
 
 ---
 
-### Main Ideas
+## Main Ideas
 
 이제 본 논문의 핵심내용을 보도록 하겠음
 
@@ -92,7 +92,7 @@ ResNet+Faster R-CNN 모델은 두 conv layer 사이에 RoI pooling을 삽입하�
 
 ---
 
-### Backbone Network
+## Backbone Network
 
 R-FCN 모델은 backbone network로 ResNet-101 network를 사용함
 
@@ -100,7 +100,7 @@ R-FCN 모델은 backbone network로 ResNet-101 network를 사용함
 
 마지막 feature map의 channel은 2048-d이며, 1x1 conv 연산을 적용하여 channel 수를 1024-d로 줄임
 
-### Position sensitive score maps & Position-sensitive RoI pooling
+## Position sensitive score maps & Position-sensitive RoI pooling
 
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/00cd260f-8750-4c86-b0e6-c079e08ca5c4)
 
@@ -147,7 +147,7 @@ K^2(C+1)-d feature map 외에도 4k^2-d feature map을 추가하여 bounding box
 
 이에 대한 내용은 아래 Training 파트에서 살펴보겠음
 
-### Loss function
+## Loss function
 
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/70867748-9fa0-429e-a072-1b939eab52d4)
 
@@ -157,11 +157,11 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
 
 두 loss 사이의 가중치를 조절하는 balancing parameter인 λ=1로 설정함
 
-### Training
+## Training
 
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/3577201c-5a2a-43c7-9cc5-6d56700a290f)
 
-#### 1) feature extraction by pre-trained ResNet-101
+### 1) feature extraction by pre-trained ResNet-101
 
 원본 이미지를 pre-trained된 ResNet-101 모델에 입력하여 feature map을 얻음
 
@@ -169,7 +169,7 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
  * Process : feature extraction
  * Output : feature map
 
-#### 2) Position-sensitive score maps by conv layer
+### 2) Position-sensitive score maps by conv layer
 
 앞서 얻은 feature map을 channel 수가 k^2(C+1)이 되도록 하는 conv layer에 입력하여 Position-sensitive score maps를 얻음
 
@@ -183,7 +183,7 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
  * Process : 3x3(xk2(C+1)) conv layer, 3x3(x4k2) conv layer
  * Output : k^2(C+1)-d feature map(position-sensitive score map), 4k^2-d feature map
 
-#### 3) Region proposal by RPN
+### 3) Region proposal by RPN
 
 원본 이미지를 pre-trained된 ResNet-101 모델에 입력하여 얻은 feature map을 RPN(Region Proposal Network)에 입력함
 
@@ -193,8 +193,20 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
  * Process : region proposal
  * Output : RoIs
 
-#### 4) Average pooling by Position-sensitive pooling
+### 4) Average pooling by Position-sensitive pooling
 
-#### 5) Voting
+2)번 과정에서 얻은 k^2(C+1)-d feature map(position-sensitive score map),4k^2-d feature map과
 
-#### 6) Train R-FCN network by loss function
+3)번 과정에서 얻은 RoIs를 사용하여 Position-sensitive pooling을 수행함
+
+이 과정을 통해 각각 k×k(×(C+1)) feature map과 k×k(×4) 크기의 feature map을 얻을 수 있음
+
+ * Input : k^2(C+1)-d feature map(position-sensitive score map),4k^2-d feature map and RoIs
+
+ * Process : position-sensitive pooling
+
+ * Output : k×k(×(C+1)) sized feature map, k×k(×4) sized feature map
+ 
+### 5) Voting
+
+### 6) Train R-FCN network by loss function
