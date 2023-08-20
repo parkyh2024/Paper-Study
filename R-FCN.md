@@ -151,4 +151,10 @@ K^2(C+1)-d feature map 외에도 4k^2-d feature map을 추가하여 bounding box
 
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/70867748-9fa0-429e-a072-1b939eab52d4)
 
+Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box regression loss의 합으로 구성되어 있음
+
+여기서 c∗은 RoI의 ground truth label에 해당하며, IoU 값을 기준으로 0.5 이상일 경우 c∗=1, 그 이외의 경우에는 c∗=0 임
+
+두 loss 사이의 가중치를 조절하는 balancing parameter인 λ=1로 설정함
+
 
