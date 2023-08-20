@@ -157,4 +157,36 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
 
 두 loss 사이의 가중치를 조절하는 balancing parameter인 λ=1로 설정함
 
+### Training
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/3577201c-5a2a-43c7-9cc5-6d56700a290f)
+
+#### 1) feature extraction by pre-trained ResNet-101
+
+원본 이미지를 pre-trained된 ResNet-101 모델에 입력하여 feature map을 얻음
+
+ * Input : image
+ * Process : feature extraction
+ * Output : feature map
+
+#### 2) Position-sensitive score maps by conv layer
+
+앞서 얻은 feature map을 channel 수가 k^2(C+1)이 되도록 하는 conv layer에 입력하여 Position-sensitive score maps를 얻음
+
+논문에서 k=3, C=20으로 지정했고 bounding box regression 역시 이와 같은 방법으로 수행함
+
+다만 앞서 얻은 feature map을 channel이 4k^2가 되도록 하는 conv layer에 입력함
+
+이를 통해 RoI의 각 구간별로 bounding box의 offset이 encode된 4k^2-d feature map을 얻음
+
+ * Input : feature map
+ * Process : 3x3(xk2(C+1)) conv layer, 3x3(x4k2) conv layer
+ * Output : k^2(C+1)-d feature map(position-sensitive score map), 4k^2-d feature map
+
+#### 3) Region proposal by RPN
+
+#### 4) Average pooling by Position-sensitive pooling
+
+#### 5) Voting
+
+#### 6) Train R-FCN network by loss function
