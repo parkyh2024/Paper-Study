@@ -209,4 +209,38 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
  
 ### 5) Voting
 
+![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/0a895723-f4c4-45bf-9f78-9d784fa4f586)
+
+4)번 과정을 통해 얻은 feature map에 대하여 각 channel의 요소들의 평균을 구하는 voting 과정을 수행하고
+
+이를 통해 k×k(×(C+1)) 크기의 feature map으로부터 class score에 해당하는 (C+1) 크기의 feature vector를,
+
+k×k(×4) 크기의 feature map으로부터 bounding box regressor에 해당하는 길이가 4인 feature vector를 얻을 수 있음
+
+ * Input : k×k(×(C+1)) sized feature map, k×k(×4) sized feature map
+ * Process : Voting
+ * Output : (C+1)-d sized feature vector, 4-d sized feature vector 
+
 ### 6) Train R-FCN network by loss function
+
+마지막으로 앞선 과정에서 얻은 feature vector를 사용하여 각각 cross-entropy, smooth l1 loss를 구한 후 backward pass를 통해 network를 학습시킴
+
+실제 학습 시에는 RPN과 R-FCN을 번갈아가며 학습하는 4-step alternating training 방식을 사용했다고 함
+
+---
+
+## Inference
+
+detection 시에는 최종적으로 얻은 예측값에 Non maximum suppression을 수행하며 이 때 nms threshold=0.7, IoU threshold=0.5로 설정함
+
+# 결론
+
+R-FCN 모델은 class별로 객체의 위치 정보를 encode한 position-sensitive score & pooling을 통해 translation invariance dilemma를 효과적으로 해결했음
+
+이를 통해 PASCAL VOC 2007 데이터셋을 사용했을 때, 83.6%라는 높은 mAP값을 보여줌
+
+R-FCN 모델은 이름 그대로 fully convolutional network이며, 오직 conv layer로만 구성됨
+
+또한 position-sensitive pooling 이후 학습 가능한 layer가 없기 때문에 region-wise 연산량이 많지 않아(cost free) 학습 및 추론 속도가 빠름
+
+detection 시 이미지 한 장당 170ms 정도 소요되며 이는 ResNet + Faster R-CNN 모델보다 0.5~20배 이상 빠른 속도라고 함함
