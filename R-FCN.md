@@ -185,6 +185,14 @@ Loss function은 Fast R-CNN 모델과 같이 cross-entropy loss와 bounding box 
 
 #### 3) Region proposal by RPN
 
+원본 이미지를 pre-trained된 ResNet-101 모델에 입력하여 얻은 feature map을 RPN(Region Proposal Network)에 입력함
+
+이를 통해 RoIs를 얻을 수 있음
+
+ * Input : feature map from pre-trained ResNet-101
+ * Process : region proposal
+ * Output : RoIs
+
 #### 4) Average pooling by Position-sensitive pooling
 
 #### 5) Voting
