@@ -28,15 +28,13 @@ feature map의 각 channel별로 요소의 평균값을 구하는 voting을 수�
 
 ## Main Ideas
 
-이제 본 논문의 핵심내용을 보도록 하겠음
-
 ![이미지](https://github.com/parkyh2024/Paper-Study/assets/122156509/047b979d-1bfc-4dd8-bf13-f290b46113f1)
 
 Translation invariance는 입력값의 위치가 변해도 출력값은 동일할 경우에 해당하는 함수의 속성인데
 
 만약 위치가 서로 다른 동일한 객체, 예를 들어 위의 그림과 같이 석상(statue)의 이미지를 특정 모델에 입력해도 동일하게 석상이라고 인식할 경우
 
-해당 모델은 translation invariance한 속성을 가지고 있다고 할 수 있고
+해당 모델은 translation invariance한 속성이다 라고 할 수 있고,
 
 반대로 입력값의 위치가 변하면 출력값이 달라질 경우 이를 translation variance(=equivalence)라고 함
 
