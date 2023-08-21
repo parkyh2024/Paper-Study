@@ -235,4 +235,4 @@ R-FCN 모델은 이름 그대로 fully convolutional network이며, 오직 conv 
 
 또한 position-sensitive pooling 이후 학습 가능한 layer가 없기 때문에 region-wise 연산량이 많지 않아(cost free) 학습 및 추론 속도가 빠름
 
-detection 시 이미지 한 장당 170ms 정도 소요되며 이는 ResNet + Faster R-CNN 모델보다 0.5~20배 이상 빠른 속도라고 함함
+detection 시 이미지 한 장당 170ms 정도 소요되며 이는 ResNet + Faster R-CNN 모델보다 0.5~20배 이상 빠른 속도라고 함
