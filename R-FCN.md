@@ -225,10 +225,6 @@ k×k(×4) 크기의 feature map으로부터 bounding box regressor에 해당하�
 
 ---
 
-## Inference
-
-detection 시에는 최종적으로 얻은 예측값에 Non maximum suppression을 수행하며 이 때 nms threshold=0.7, IoU threshold=0.5로 설정함
-
 # 결론
 
 R-FCN 모델은 class별로 객체의 위치 정보를 encode한 position-sensitive score & pooling을 통해 translation invariance dilemma를 효과적으로 해결했음
