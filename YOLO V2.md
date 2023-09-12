@@ -13,3 +13,4 @@
   * Version 1에서 사용되던 Fully connected 구조가 사라짐
 ---
 > Anchor Box
+![이미지](https://user-images.githubusercontent.com/122156509/267207272-0ed57b5a-8a82-4b6d-b8a6-c90ee0b8eba4.png)
